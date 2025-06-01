@@ -1,13 +1,18 @@
 # Importamos las librerías necesarias
 import streamlit as st
 from pathlib import Path
+import os
 
 # Importamos funciones auxiliares desde módulos propios
 from utils.helpers import create_platform_metrics 
 from components.ui_elements import display_platform_overview
 
-# Definimos la ruta base donde se encuentran los archivos de visualización
-BASE_PLOT_PATH = Path("static_data/plots") / "platforms"
+
+current_script_dir = os.path.dirname(__file__)
+parent_dir = os.path.join(current_script_dir, os.pardir)
+
+BASE_PLOT_PATH = Path(os.path.join(parent_dir, "static", "plots", "platforms"))
+
 
 # Función que genera la barra lateral del dashboard
 def render_sidebar(platforms):

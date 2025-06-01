@@ -1,9 +1,16 @@
 import streamlit as st
+import os
 from pathlib import Path
 
-# Definimos las rutas base donde se encuentran los archivos de visualización
-BASE_POLARIZATION_PATH = Path("static_data/plots/polarization") 
-BASE_COHESION_PATH = Path("static_data/plots/cohesion")
+# Obtenemos la ruta del directorio donde se encuentra el script actual.
+current_script_dir = os.path.dirname(__file__)
+parent_dir = os.path.join(current_script_dir, os.pardir)
+
+# Construimos la ruta completa usando os.path.join para compatibilidad entre sistemas operativos.
+BASE_PLOT_PATH = Path(os.path.join(parent_dir, "static", "plots"))
+BASE_POLARIZATION_PATH = Path(os.path.join(BASE_PLOT_PATH, "polarization"))
+BASE_COHESION_PATH = Path(os.path.join(BASE_PLOT_PATH, "cohesion"))
+
 
 def get_available_categories(polarization_path: Path, cohesion_path: Path) -> list[str]:
     """
