@@ -4,6 +4,7 @@ import streamlit as st
 # Importar módulos de página y configuración
 from full_pages import platform_analysis
 from full_pages import polarization_cohesion_metrics
+from full_pages import user_analysis
 from styling import apply_global_styles
 from full_pages import home
 from components.ui_elements import app_footer
@@ -16,7 +17,7 @@ def main():
     if 'current_page' not in st.session_state:
         st.session_state.current_page = "🏠 Página de Inicio"
 
-    page_options = ["🏠 Página de Inicio", "📊 Análisis de Plataformas", "📈 Análisis de Cohesión y Polarización"]
+    page_options = ["🏠 Página de Inicio", "📊 Análisis de Plataformas", "📈 Análisis de Cohesión y Polarización", "👨🏻‍💻 Análisis Individual de Usuarios"]
 
     # Cambiar a barra lateral:
     page = st.sidebar.radio(
@@ -34,6 +35,8 @@ def main():
         platform_analysis.show_page()
     elif page == "📈 Análisis de Cohesión y Polarización":
         polarization_cohesion_metrics.show_page()
+    elif page == "👨🏻‍💻 Análisis Individual de Usuarios":
+        user_analysis.show_page()
 
     # Footer común a todas las páginas
     app_footer()
